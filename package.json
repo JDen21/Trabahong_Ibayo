@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "gh-pages": "^6.3.0",
+    "node-html-parser": "^7.0.2"
+  },
+  "scripts": {
+    "build": "cd ./dmw-search && npm run build",
+    "publish": "npm run build && node publish.js"
+  }
+}
