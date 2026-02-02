@@ -3,8 +3,9 @@
     "gh-pages": "^6.3.0",
     "node-html-parser": "^7.0.2"
   },
+  "homepage": "https://jden21.github.io/Trabahong_Ibayo",
   "scripts": {
     "build": "cd ./dmw-search && npm run build",
-    "publish": "npm run build && node publish.js"
+    "publish": "gh-pages -d ./dmw-search/dist"
   }
 }
