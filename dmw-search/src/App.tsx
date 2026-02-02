@@ -29,7 +29,7 @@ function App() {
         Updated: Feb. 02, 2026
       </h3>
       <h4 className="text-center pb-3 text-2xl font-semibold tracking-tight first:mt-5">
-        This jobs are crawled from the following sites:
+        These jobs are crawled from the following sites:
       </h4>
       <p className="text-center pb-12 text-1xl tracking-tight first:mt-5">
         <a href='https://dmwjobs.ph/' target='_blank'>dmwjobs.ph</a>
@@ -83,16 +83,7 @@ export default App
 
 function JobsList(props: { jobTitle: string, jobDate: Date | undefined, jobAgency: string, jobLoc: string }) {
   const { jobTitle, jobDate, jobAgency, jobLoc } = props;
-  
-  if (jobs.length <= 0) {
-    return (
-      <h1 className='text-center text-3xl font-semibold tracking-tight'>
-        No Jobs Found.
-      </h1>
-    );
-  }
-
-  return jobs
+  const filteredJobs = jobs
   .filter(job => {
     if (!job.title.toLowerCase().includes(jobTitle.toLowerCase().trim())) {
       return false;
@@ -114,10 +105,20 @@ function JobsList(props: { jobTitle: string, jobDate: Date | undefined, jobAgenc
       return false;
     }
     return true;
-  })
+  });
+  
+  if (jobs.length <= 0 || filteredJobs.length === 0) {
+    return (
+      <h1 className='text-center text-3xl font-semibold tracking-tight'>
+        No Jobs Found.
+      </h1>
+    );
+  }
+  console.log({ filteredJobs })
+  return filteredJobs 
   .map(job => {
     return (
-      <Card key={`${job.poster}_${job.title}`} className='w-full'>
+      <Card key={`${JSON.stringify(job)}`} className='w-full'>
         <CardHeader>
           <CardTitle>
             {job.title}

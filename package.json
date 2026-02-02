@@ -6,6 +6,6 @@
   "homepage": "https://jden21.github.io/Trabahong_Ibayo",
   "scripts": {
     "build": "cd ./dmw-search && npm run build",
-    "publish": "gh-pages -d dist"
+    "publish": "gh-pages -d ./dmw-search/dist"
   }
 }
